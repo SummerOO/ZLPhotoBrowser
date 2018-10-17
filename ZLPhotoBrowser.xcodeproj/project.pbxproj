@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BC93B302177403B008E3705 /* ZImagePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC93B2F2177403B008E3705 /* ZImagePickerView.m */; };
 		809FB34E0364A1AB7740E4D4 /* libPods-ZLPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0927EACC681200867658B044 /* libPods-ZLPhotoBrowser.a */; };
 		FD028BD01CBE33BB009DD2FC /* ZLPhotoActionSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD028BA11CBE33BB009DD2FC /* ZLPhotoActionSheet.xib */; };
 		FD028BD11CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD028BA21CBE33BB009DD2FC /* ZLPhotoBrowserCell.xib */; };
@@ -55,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		0927EACC681200867658B044 /* libPods-ZLPhotoBrowser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ZLPhotoBrowser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BC93B2E2177403B008E3705 /* ZImagePickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZImagePickerView.h; sourceTree = "<group>"; };
+		3BC93B2F2177403B008E3705 /* ZImagePickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZImagePickerView.m; sourceTree = "<group>"; };
 		562538332CF28C3D81959D16 /* Pods-ZLPhotoBrowser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLPhotoBrowser.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZLPhotoBrowser/Pods-ZLPhotoBrowser.release.xcconfig"; sourceTree = "<group>"; };
 		C219308794659F498CBCB00A /* Pods-ZLPhotoBrowser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZLPhotoBrowser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZLPhotoBrowser/Pods-ZLPhotoBrowser.debug.xcconfig"; sourceTree = "<group>"; };
 		FD028BA11CBE33BB009DD2FC /* ZLPhotoActionSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZLPhotoActionSheet.xib; sourceTree = "<group>"; };
@@ -154,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3BC93B2D21773CB1008E3705 /* ZImagePikerView */ = {
+			isa = PBXGroup;
+			children = (
+				3BC93B2E2177403B008E3705 /* ZImagePickerView.h */,
+				3BC93B2F2177403B008E3705 /* ZImagePickerView.m */,
+			);
+			path = ZImagePikerView;
+			sourceTree = "<group>";
+		};
 		F92C6AFB9001EFD3C70E0116 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +178,7 @@
 		FD028B8E1CBE33BB009DD2FC /* PhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				3BC93B2D21773CB1008E3705 /* ZImagePikerView */,
 				FD028B8F1CBE33BB009DD2FC /* resource */,
 				FD2CC6BF209DCA8B00F4E6C7 /* ZLImageEditTools */,
 				FD1DA94721205D6E00D3FD64 /* Animation */,
@@ -464,6 +477,7 @@
 				FDDB9EBB1E6D2EF6008ED9F1 /* YYFPSLabel.m in Sources */,
 				FDABF1611FEE60BC0068E6ED /* UIImage+ZLPhotoBrowser.m in Sources */,
 				FD92FA6D1F32B4CE00D7B8C1 /* UIButton+EnlargeTouchArea.m in Sources */,
+				3BC93B302177403B008E3705 /* ZImagePickerView.m in Sources */,
 				FDC48B821FB5588E002815C8 /* ZLPlayer.m in Sources */,
 				FD028BD91CBE33BB009DD2FC /* ZLPhotoBrowser.m in Sources */,
 				FD028BDF1CBE33BB009DD2FC /* ZLThumbnailViewController.m in Sources */,
