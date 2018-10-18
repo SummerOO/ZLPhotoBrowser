@@ -43,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) UIColor *bottomBtnsNormalTitleColor;
 
+@property (nonatomic, strong) NSMutableArray<PHAsset *> *lastSelectAssets; // 记录上次选择的图片或视频
+
 @property (nonatomic, copy) void (^selectImageBlock)(NSArray<UIImage *> *__nullable images, NSArray<PHAsset *> *assets, BOOL isOriginal);
 
 - (void) show:(UIViewController *)viewController ;

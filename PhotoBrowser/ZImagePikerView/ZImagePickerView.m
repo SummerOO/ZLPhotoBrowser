@@ -16,7 +16,6 @@
     UIStatusBarStyle _lastStatusBarStyle;
 }
 @property (nonatomic, strong) NSMutableArray<UIImage *> *lastSelectPhotos;
-@property (nonatomic, strong) NSMutableArray<PHAsset *> *lastSelectAssets;
 @property (nonatomic, strong) NSArray *arrDataSources;
 @property (nonatomic, assign) BOOL isOriginal;
 
@@ -93,7 +92,7 @@
     //如果调用的方法没有传sender，则该属性必须提前赋值
     actionSheet.sender = viewController;
     //记录上次选择的图片
-    actionSheet.arrSelectedAssets = YES && self.pictureMax >1 ? self.lastSelectAssets : nil;
+    actionSheet.arrSelectedAssets = self.lastSelectAssets ;
     
     zl_weakify(self);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
