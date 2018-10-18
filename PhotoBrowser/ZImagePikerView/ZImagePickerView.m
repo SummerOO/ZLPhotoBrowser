@@ -26,6 +26,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.allowEditVideo = YES;
         _lastStatusBarStyle =  [UIApplication sharedApplication].statusBarStyle;
     }
     return self;
@@ -46,6 +47,11 @@
     
 #pragma mark - 参数配置 optional，可直接使用 defaultPhotoConfiguration
     
+    actionSheet.configuration.navBarColor = self.navBarColor;
+    actionSheet.configuration.navTitleColor = self.navTitleColor;
+    actionSheet.configuration.bottomBtnsNormalTitleColor = self.bottomBtnsNormalTitleColor;
+    
+    actionSheet.configuration.sortAscending = NO; //降序排列
     //设置相册内部显示拍照按钮
     actionSheet.configuration.allowTakePhotoInLibrary = NO;
     //设置照片最大预览数
@@ -54,6 +60,10 @@
     actionSheet.configuration.maxSelectCount = self.pictureMax;
     //设置允许选择的视频最大时长
     actionSheet.configuration.maxVideoDuration = self.videoMaxTime;
+    
+    actionSheet.configuration.allowEditVideo = self.allowEditVideo;
+    actionSheet.configuration.exportVideoType = ZLExportVideoTypeMp4;
+    actionSheet.configuration.allowMixSelect = NO;
     //单选模式是否显示选择按钮
     //    actionSheet.configuration.showSelectBtn = YES;
     //是否在选择图片后直接进入编辑界面
@@ -103,6 +113,7 @@
 //            [strongSelf anialysisAssets:assets original:isOriginal];
 //        }
     }];
+    
     
     actionSheet.cancleBlock = ^{
         NSLog(@"取消选择图片");
