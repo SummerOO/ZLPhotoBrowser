@@ -642,6 +642,11 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
         ShowToastLong(GetLocalLanguageTextValue(ZLPhotoBrowserMaxVideoDurationText), configuration.maxVideoDuration);
         return NO;
     }
+    if (model.type == ZLAssetMediaTypeVideo) {
+        configuration.maxSelectCount = 1;
+    } else {
+        configuration.maxSelectCount = 6;
+    }
     return YES;
 }
 

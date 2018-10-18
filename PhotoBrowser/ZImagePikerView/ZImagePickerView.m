@@ -34,12 +34,7 @@
 
 - (void) show:(UIViewController *)viewController {
     ZLPhotoActionSheet *a = [self getPas:viewController];
-    
-//    if (preview) {
-        [a showPreviewAnimated:YES];
-//    } else {
-//        [a showPhotoLibrary];
-//    }
+    [a showPreviewAnimated:YES];
 }
 
 - (ZLPhotoActionSheet *)getPas:(UIViewController *)viewController {
@@ -103,10 +98,13 @@
     zl_weakify(self);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
         zl_strongify(weakSelf);
-        strongSelf.arrDataSources = images;
-        strongSelf.isOriginal = isOriginal;
-        strongSelf.lastSelectAssets = assets.mutableCopy;
-        strongSelf.lastSelectPhotos = images.mutableCopy;
+//        strongSelf.arrDataSources = images;
+//        strongSelf.isOriginal = isOriginal;
+//        strongSelf.lastSelectAssets = assets.mutableCopy;
+//        strongSelf.lastSelectPhotos = images.mutableCopy;
+        if (strongSelf.selectImageBlock) {
+            strongSelf.selectImageBlock(images, assets, isOriginal);
+        }
         NSLog(@"image:%@", images);
         //解析图片
 //        if (!strongSelf.allowAnialysisAssetSwitch.isOn) {

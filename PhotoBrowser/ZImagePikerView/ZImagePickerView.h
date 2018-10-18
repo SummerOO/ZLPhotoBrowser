@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  最大照片张数
  */
-@property (assign, nonatomic) NSInteger pictureMax;
+@property (assign, nonatomic) NSInteger pictureMax;  // 因只能选一个视频 在ZLThumbnailViewController类中写死了值 修改时需注意
 
 @property (assign, nonatomic) BOOL showSelectedMask; // 是否在已选图片上显示遮罩层
 
@@ -42,6 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
  底部工具栏按钮 可交互 状态标题颜色，底部 toolbar 按钮可交互状态title颜色均使用这个，确定按钮 可交互 的背景色为这个，默认rgb(80, 180, 234)
  */
 @property (nonatomic, strong) UIColor *bottomBtnsNormalTitleColor;
+
+@property (nonatomic, copy) void (^selectImageBlock)(NSArray<UIImage *> *__nullable images, NSArray<PHAsset *> *assets, BOOL isOriginal);
 
 - (void) show:(UIViewController *)viewController ;
 

@@ -649,6 +649,9 @@ double const ScalePhotoWidth = 1000;
                 ShowToastLong(GetLocalLanguageTextValue(ZLPhotoBrowserMaxSelectCountText), strongSelf.configuration.maxSelectCount);
                 return;
             }
+            if (model.type == ZLAssetMediaTypeVideo) {
+                strongSelf.configuration.maxSelectCount = 1;
+            }
             if (strongSelf.arrSelectedModels.count > 0) {
                 ZLPhotoModel *sm = strongSelf.arrSelectedModels.firstObject;
                 if (!strongSelf.configuration.allowMixSelect &&
