@@ -308,7 +308,7 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         columnCount = 6;
     } else {
-        columnCount = 4;
+        columnCount = 3;
     }
     
     layout.itemSize = CGSizeMake((width-1.5*columnCount)/columnCount, (width-1.5*columnCount)/columnCount);

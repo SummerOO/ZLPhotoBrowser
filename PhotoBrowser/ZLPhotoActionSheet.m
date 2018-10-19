@@ -322,7 +322,7 @@ double const ScalePhotoWidth = 1000;
 - (void)resetSubViewState
 {
     self.hidden = ![ZLPhotoManager havePhotoLibraryAuthority] || !self.preview;
-    [self changeCancelBtnTitle];
+//    [self changeCancelBtnTitle];
 //    [self.collectionView setContentOffset:CGPointZero];
 }
 
@@ -536,10 +536,10 @@ double const ScalePhotoWidth = 1000;
 
 - (IBAction)btnCancel_Click:(id)sender
 {
-    if (self.arrSelectedModels.count) {
-        [self requestSelPhotos:nil data:self.arrSelectedModels hideAfterCallBack:YES];
-        return;
-    }
+//    if (self.arrSelectedModels.count) {
+//        [self requestSelPhotos:nil data:self.arrSelectedModels hideAfterCallBack:YES];
+//        return;
+//    }
     
     if (self.cancleBlock) self.cancleBlock();
     [self hide];
@@ -688,7 +688,7 @@ double const ScalePhotoWidth = 1000;
         if (strongSelf.configuration.showSelectedMask) {
             strongCell.topView.hidden = !model.isSelected;
         }
-        [strongSelf changeCancelBtnTitle];
+//        [strongSelf changeCancelBtnTitle];
     };
     
     cell.allSelectGif = self.configuration.allowSelectGif;
@@ -945,6 +945,7 @@ double const ScalePhotoWidth = 1000;
     if (self.configuration.maxSelectCount > 1 && self.arrSelectedModels.count < self.configuration.maxSelectCount && sel) {
         model.selected = sel;
         [self.arrSelectedModels addObject:model];
+        [self requestSelPhotos:nil data:self.arrSelectedModels hideAfterCallBack:YES];
     } else if (self.configuration.maxSelectCount == 1 && !self.arrSelectedModels.count && sel) {
         if (![self shouldDirectEdit:model]) {
             model.selected = sel;
@@ -954,7 +955,7 @@ double const ScalePhotoWidth = 1000;
         }
     }
     [self.collectionView reloadData];
-    [self changeCancelBtnTitle];
+//    [self changeCancelBtnTitle];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
