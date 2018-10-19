@@ -118,4 +118,8 @@
     
     return actionSheet;
 }
+
+- (void)previewSelectedPhotos:(UIViewController *)viewController lastSelectPhotos:(NSArray<UIImage *> *)images assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal {
+    [[self getPas: viewController] previewSelectedPhotos:images assets:assets index:index isOriginal:isOriginal];
+}
 @end
