@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwQ-VQ-65C">
-                    <rect key="frame" x="0.0" y="294" width="375" height="373"/>
+                    <rect key="frame" x="0.0" y="292" width="375" height="375"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QJz-3P-fHI">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
@@ -45,7 +45,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gN-s7-KDC">
-                            <rect key="frame" x="12" y="310" width="351" height="53"/>
+                            <rect key="frame" x="12" y="312" width="351" height="53"/>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="53" id="gys-VL-LTC"/>
@@ -63,7 +63,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwD-9O-azZ">
-                            <rect key="frame" x="12" y="158" width="351" height="142"/>
+                            <rect key="frame" x="12" y="160" width="351" height="142"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择图片或视频" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1SU-pI-EyX">
                                     <rect key="frame" x="0.0" y="4" width="351" height="30"/>
@@ -151,6 +151,7 @@
                         <constraint firstAttribute="trailing" secondItem="0gN-s7-KDC" secondAttribute="trailing" constant="12" id="QTb-92-jkt"/>
                         <constraint firstItem="QJz-3P-fHI" firstAttribute="top" secondItem="NwQ-VQ-65C" secondAttribute="top" id="SHJ-7J-NXO"/>
                         <constraint firstAttribute="trailing" secondItem="KwD-9O-azZ" secondAttribute="trailing" constant="12" id="aVz-IU-wd0"/>
+                        <constraint firstAttribute="height" constant="375" id="kcM-2j-pc3"/>
                         <constraint firstItem="0gN-s7-KDC" firstAttribute="leading" secondItem="NwQ-VQ-65C" secondAttribute="leading" constant="12" id="z6i-8s-ZiH"/>
                         <constraint firstItem="0gN-s7-KDC" firstAttribute="top" secondItem="KwD-9O-azZ" secondAttribute="bottom" constant="10" id="zCf-mn-WdT"/>
                     </constraints>
@@ -158,10 +159,9 @@
             </subviews>
             <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="0.20203874143835615" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="NwQ-VQ-65C" firstAttribute="top" secondItem="uFx-aZ-mnT" secondAttribute="top" constant="294" id="Iio-Hp-bGC"/>
+                <constraint firstAttribute="bottom" secondItem="NwQ-VQ-65C" secondAttribute="bottom" id="TT5-Gk-bTC"/>
                 <constraint firstItem="NwQ-VQ-65C" firstAttribute="leading" secondItem="uFx-aZ-mnT" secondAttribute="leading" id="Wlz-Qi-izY"/>
                 <constraint firstAttribute="trailing" secondItem="NwQ-VQ-65C" secondAttribute="trailing" id="e7G-V3-qro"/>
-                <constraint firstAttribute="bottom" secondItem="NwQ-VQ-65C" secondAttribute="bottom" id="gmU-Je-6FX"/>
             </constraints>
             <connections>
                 <outlet property="baseView" destination="NwQ-VQ-65C" id="NHE-rh-QeU"/>

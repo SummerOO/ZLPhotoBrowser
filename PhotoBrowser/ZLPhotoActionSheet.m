@@ -20,7 +20,7 @@
 #import "ZLDefine.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
-#define kBaseViewHeight (self.configuration.maxPreviewCount ? 300 : 142)
+#define kBaseViewHeight (self.configuration.maxPreviewCount ? 375 : 180)
 
 double const ScalePhotoWidth = 1000;
 
@@ -198,7 +198,8 @@ double const ScalePhotoWidth = 1000;
         self.verColHeight.constant = .0;
     } else if (self.configuration.allowDragSelect) {
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
-        [self.baseView addGestureRecognizer:pan];
+        [self.baseView addGestureRecognizer:pan];// 这个else 走了吗
+        
     }
     
     PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
@@ -387,10 +388,11 @@ double const ScalePhotoWidth = 1000;
     }
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self hide];
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+//{
+//    [super touchesBegan:touches withEvent:event];
+//    [self hide];
+//}
 
 - (void)panAction:(UIPanGestureRecognizer *)pan
 {
