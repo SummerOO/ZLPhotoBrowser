@@ -205,7 +205,8 @@
     [self.view addSubview:_navView];
     
     _btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_btnBack setImage:GetImageWithName(@"zl_navBack") forState:UIControlStateNormal];
+    [_btnBack setTitleColor: configuration.navTitleColor forState: UIControlStateNormal];
+    [_btnBack setTitle: @"返回" forState: UIControlStateNormal];
     [_btnBack setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
     [_btnBack addTarget:self action:@selector(btnBack_Click) forControlEvents:UIControlEventTouchUpInside];
     [_navView addSubview:_btnBack];
