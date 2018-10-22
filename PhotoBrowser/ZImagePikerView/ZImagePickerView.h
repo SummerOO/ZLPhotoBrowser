@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) BOOL showSelectedMask; // 是否在已选图片上显示遮罩层
 
-@property (assign, nonatomic) BOOL allowEditVideo; // x允许编辑视频
+@property (assign, nonatomic) BOOL allowEditVideo; // 允许编辑视频
 
 @property (nonatomic, strong) UIColor *navBarColor;
 
@@ -45,11 +45,29 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSMutableArray<PHAsset *> *lastSelectAssets; // 记录上次选择的图片或视频
 
-@property (nonatomic, copy) void (^selectImageBlock)(NSArray<UIImage *> *__nullable images, NSArray<PHAsset *> *assets, BOOL isOriginal);
+/**
+ 支持开发者自定义图片，但是所自定义图片资源名称必须与被替换的bundle中的图片名称一致
+ @example: 开发者需要替换选中与未选中的图片资源，则需要传入的数组为 @[@"zl_btn_selected", @"zl_btn_unselected"]，则框架内会使用开发者项目中的图片资源，而其他图片则用框架bundle中的资源
+ */
+@property (nonatomic, strong) NSArray<NSString *> *customImageNames;
+/**
+ 选择照片回调，回调解析好的图片、对应的asset对象
+ */
+@property (nonatomic, copy) void (^selectImageBlock)(NSArray<UIImage *> *__nullable images, NSArray<PHAsset *> *assets, NSString *url);
 
-- (void) show:(UIViewController *)viewController ;
-
+/**
+ 提供 混合预览照片及视频的方法， 相册PHAsset / 网络、本地图片 / 网络、本地视频，（需先设置 sender 参数）
+ 
+ @warning photos 内对象请调用 ZLDefine 中 GetDictForPreviewPhoto 方法，e.g.: GetDictForPreviewPhoto(image, ZLPreviewPhotoTypeUIImage)
+ 
+ @param photos 接收对象 ZLDefine 中 GetDictForPreviewPhoto 生成的字典
+ @param index 点击的照片/视频索引
+ @param hideToolBar 是否隐藏底部工具栏和导航右上角选择按钮
+ @param complete 回调 (数组内为接收的 PHAsset / UIImage / NSURL 对象)
+ */
 - (void)previewSelectedPhotos:(UIViewController *)viewController lastSelectPhotos:(NSArray<UIImage *> *)images assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal;
+
+- (void) show:(UIViewController *)viewController;
 @end
 
 NS_ASSUME_NONNULL_END

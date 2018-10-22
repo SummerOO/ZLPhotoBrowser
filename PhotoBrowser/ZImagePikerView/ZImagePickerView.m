@@ -59,36 +59,8 @@
     actionSheet.configuration.exportVideoType = ZLExportVideoTypeMp4;
     actionSheet.configuration.allowMixSelect = NO;
     actionSheet.configuration.allowSelectOriginal = NO;
-    //单选模式是否显示选择按钮
-    //    actionSheet.configuration.showSelectBtn = YES;
-    //是否在选择图片后直接进入编辑界面
-//    actionSheet.configuration.editAfterSelectThumbnailImage = self.editAfterSelectImageSwitch.isOn;
-    //是否保存编辑后的图片
-    //    actionSheet.configuration.saveNewImageAfterEdit = NO;
-    //设置编辑比例
-    //    actionSheet.configuration.clipRatios = @[GetClipRatio(7, 1)];
-    //是否在已选择照片上显示遮罩层
+    actionSheet.configuration.customImageNames = self.customImageNames;
     actionSheet.configuration.showSelectedMask = self.showSelectedMask;
-    //颜色，状态栏样式
-    //    actionSheet.configuration.selectedMaskColor = [UIColor purpleColor];
-    //    actionSheet.configuration.navBarColor = [UIColor orangeColor];
-    //    actionSheet.configuration.navTitleColor = [UIColor blackColor];
-    //    actionSheet.configuration.bottomBtnsNormalTitleColor = kRGB(80, 160, 100);
-    //    actionSheet.configuration.bottomBtnsDisableBgColor = kRGB(190, 30, 90);
-    //    actionSheet.configuration.bottomViewBgColor = [UIColor blackColor];
-    //    actionSheet.configuration.statusBarStyle = UIStatusBarStyleDefault;
-    //是否允许框架解析图片
-//    actionSheet.configuration.shouldAnialysisAsset = self.allowAnialysisAssetSwitch.isOn;
-    //框架语言
-    //自定义图片
-    //    actionSheet.configuration.customImageNames = @[@"zl_navBack"];
-    
-    //是否使用系统相机
-    //    actionSheet.configuration.useSystemCamera = YES;
-    //    actionSheet.configuration.sessionPreset = ZLCaptureSessionPreset1920x1080;
-    //    actionSheet.configuration.exportVideoType = ZLExportVideoTypeMp4;
-    //    actionSheet.configuration.allowRecordVideo = NO;
-    //    actionSheet.configuration.maxVideoDuration = 5;
 #pragma mark - required
     //如果调用的方法没有传sender，则该属性必须提前赋值
     actionSheet.sender = viewController;
@@ -104,18 +76,11 @@
     zl_weakify(self);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
         zl_strongify(weakSelf);
-//        strongSelf.arrDataSources = images;
-//        strongSelf.isOriginal = isOriginal;
-//        strongSelf.lastSelectAssets = assets.mutableCopy;
-//        strongSelf.lastSelectPhotos = images.mutableCopy;
+        NSString *videoUrl = [ZLPhotoManager getVideoExportFilePath:(ZLExportVideoTypeMp4)];
         if (strongSelf.selectImageBlock) {
-            strongSelf.selectImageBlock(images, assets, isOriginal);
+            strongSelf.selectImageBlock(images, assets, videoUrl);
         }
         NSLog(@"image:%@", images);
-        //解析图片
-//        if (!strongSelf.allowAnialysisAssetSwitch.isOn) {
-//            [strongSelf anialysisAssets:assets original:isOriginal];
-//        }
     }];
     
     
