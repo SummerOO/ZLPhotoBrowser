@@ -829,11 +829,10 @@
 - (void)onOkClick
 {
     [self.playerView reset];
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (self.doneBlock) {
-            self.doneBlock(self.takedImage, self.videoUrl);
-        }
-    }];
+    
+    if (self.finishBlock) {
+        self.finishBlock(self.takedImage, self.videoUrl, self);
+    }
 }
 
 //dismiss

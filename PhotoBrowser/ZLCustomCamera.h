@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZLDefine.h"
+#import "ZLPhotoModel.h"
 
 @interface ZLCustomCamera : UIViewController
 
@@ -32,5 +33,10 @@
  确定回调，如果拍照则videoUrl为nil，如果视频则image为nil
  */
 @property (nonatomic, copy) void (^doneBlock)(UIImage *image, NSURL *videoUrl);
+
+@property (nonatomic, copy) void (^photoPoneBlock)(ZLPhotoModel *photoModel);
+
+@property (nonatomic, copy) void (^finishBlock)(UIImage *image, NSURL *videoUrl, UIViewController *vc);
+
 
 @end

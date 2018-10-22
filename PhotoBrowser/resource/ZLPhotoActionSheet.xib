@@ -82,7 +82,7 @@
                                         <constraint firstAttribute="height" constant="1" id="wc6-Nw-zz0"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QiK-Oq-XRN">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QiK-Oq-XRN">
                                     <rect key="frame" x="0.0" y="89" width="351" height="53"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>

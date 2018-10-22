@@ -49,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) show:(UIViewController *)viewController ;
 
-- (void)previewSelectedPhotos:(UIViewController *)viewController lastSelectPhotos:(NSArray<UIImage *> *)images assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal
+- (void)previewSelectedPhotos:(UIViewController *)viewController lastSelectPhotos:(NSArray<UIImage *> *)images assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal;
 @end
 
 NS_ASSUME_NONNULL_END

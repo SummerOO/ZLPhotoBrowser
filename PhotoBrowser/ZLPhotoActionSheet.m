@@ -30,6 +30,8 @@ double const ScalePhotoWidth = 1000;
     ZLCollectionCell *_panCell;
     UIImageView *_panView;
     ZLPhotoModel *_panModel;
+    
+    __weak UIViewController *_viewController;
 }
 
 @property (weak, nonatomic) IBOutlet UIButton *btnCamera;
@@ -385,6 +387,10 @@ double const ScalePhotoWidth = 1000;
     if (self.senderTabBarIsShow) {
         self.sender.tabBarController.tabBar.hidden = NO;
     }
+    
+    if (_viewController) {
+        [_viewController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -469,6 +475,7 @@ double const ScalePhotoWidth = 1000;
 }
 
 #pragma mark - UIButton Action
+// captain_camera
 - (IBAction)btnCamera_Click:(id)sender
 {
     if (![ZLPhotoManager haveCameraAuthority]) {
@@ -516,8 +523,9 @@ double const ScalePhotoWidth = 1000;
         camera.circleProgressColor = self.configuration.bottomBtnsNormalTitleColor;
         camera.maxRecordDuration = self.configuration.maxRecordDuration;
         zl_weakify(self);
-        camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
+        camera.finishBlock = ^(UIImage *image, NSURL *videoUrl, UIViewController *vc) {
             zl_strongify(weakSelf);
+            strongSelf->_viewController =  vc;
             [strongSelf saveImage:image videoUrl:videoUrl];
         };
         [self.sender showDetailViewController:camera sender:nil];
