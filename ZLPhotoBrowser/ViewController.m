@@ -138,8 +138,14 @@
 //    actionSheet.configuration.statusBarStyle = UIStatusBarStyleDefault;
     //是否允许框架解析图片
     actionSheet.configuration.shouldAnialysisAsset = self.allowAnialysisAssetSwitch.isOn;
+    actionSheet.configuration.allowSelectOriginal = NO;
     //框架语言
     actionSheet.configuration.languageType = self.languageSegment.selectedSegmentIndex;
+    for (PHAsset *asset in self.lastSelectAssets ) {
+        if (asset.mediaType == PHAssetMediaTypeImage) {
+            actionSheet.configuration.allowRecordVideo = NO;
+        }
+    }
     //自定义多语言
 //    actionSheet.configuration.customLanguageKeyValue = @{@"ZLPhotoBrowserCameraText": @"没错，我就是一个相机"};
     //自定义图片

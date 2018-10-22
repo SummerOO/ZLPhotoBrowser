@@ -723,7 +723,7 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
     
     cell.allSelectGif = configuration.allowSelectGif;
     cell.allSelectLivePhoto = configuration.allowSelectLivePhoto;
-    cell.showSelectBtn = configuration.showSelectBtn;
+    cell.showSelectBtn = YES;
     cell.cornerRadio = configuration.cellCornerRadio;
     cell.showMask = configuration.showSelectedMask;
     cell.maskColor = configuration.selectedMaskColor;

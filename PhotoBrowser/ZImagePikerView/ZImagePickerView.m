@@ -58,6 +58,7 @@
     actionSheet.configuration.allowEditVideo = self.allowEditVideo;
     actionSheet.configuration.exportVideoType = ZLExportVideoTypeMp4;
     actionSheet.configuration.allowMixSelect = NO;
+    actionSheet.configuration.allowSelectOriginal = NO;
     //单选模式是否显示选择按钮
     //    actionSheet.configuration.showSelectBtn = YES;
     //是否在选择图片后直接进入编辑界面
@@ -92,7 +93,13 @@
     //如果调用的方法没有传sender，则该属性必须提前赋值
     actionSheet.sender = viewController;
     //记录上次选择的图片
-    actionSheet.arrSelectedAssets = self.lastSelectAssets ;
+    actionSheet.arrSelectedAssets = self.lastSelectAssets;
+    
+    for (PHAsset *asset in self.lastSelectAssets ) {
+        if (asset.mediaType == PHAssetMediaTypeImage) {
+            actionSheet.configuration.allowRecordVideo = NO;
+        }
+    }
     
     zl_weakify(self);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
