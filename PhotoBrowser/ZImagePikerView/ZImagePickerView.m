@@ -72,7 +72,6 @@
             actionSheet.configuration.allowRecordVideo = NO;
         }
     }
-    
     zl_weakify(self);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
         zl_strongify(weakSelf);

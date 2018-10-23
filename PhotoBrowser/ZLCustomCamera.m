@@ -190,7 +190,7 @@
     self.doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.doneBtn.frame = self.bottomView.frame;
     self.doneBtn.backgroundColor = [UIColor whiteColor];
-    [self.doneBtn setImage:GetImageWithName(@"zl_takeok") forState:UIControlStateNormal];
+    [self.doneBtn setImage:[UIImage imageNamed: @"icon_phone_sure"] forState:UIControlStateNormal];
     [self.doneBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
     self.doneBtn.layer.masksToBounds = YES;
     self.doneBtn.hidden = YES;
@@ -525,7 +525,7 @@
     self.toolView.maxRecordDuration = self.maxRecordDuration;
     [self.view addSubview:self.toolView];
     
-    self.focusCursorImageView = [[UIImageView alloc] initWithImage:GetImageWithName(@"zl_focus")];
+    self.focusCursorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"img_kuang"]];
     self.focusCursorImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.focusCursorImageView.clipsToBounds = YES;
     self.focusCursorImageView.frame = CGRectMake(0, 0, 80, 80);
@@ -874,11 +874,10 @@
         if (self.allowTakePhoto) {
             //视频长度小于1s 允许拍照则拍照，不允许拍照，则保存小于1s的视频
             NSLog(@"视频长度小于1s，按拍照处理");
-            [self onTakePicture];
+            [self videoHandlePhoto:outputFileURL];
             return;
         }
     }
-    
     self.videoUrl = outputFileURL;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self playVideo];
@@ -889,5 +888,41 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+// 裁剪视频的画面 （相当于拍照）
+- (void)videoHandlePhoto:(NSURL *)url {
+    AVURLAsset *urlSet = [AVURLAsset assetWithURL:url];
+    AVAssetImageGenerator *imageGenerator = [AVAssetImageGenerator assetImageGeneratorWithAsset:urlSet];
+    imageGenerator.appliesPreferredTrackTransform = YES;    // 截图的时候调整到正确的方向
+    NSError *error = nil;
+    CMTime time = CMTimeMake(0,30);//缩略图创建时间 CMTime是表示电影时间信息的结构体，第一个参数表示是视频第几秒，第二个参数表示每秒帧数.(如果要获取某一秒的第几帧可以使用CMTimeMake方法)
+    CMTime actucalTime; //缩略图实际生成的时间
+    CGImageRef cgImage = [imageGenerator copyCGImageAtTime:time actualTime:&actucalTime error:&error];
+    if (error) {
+        NSLog(@"截取视频图片失败:%@",error.localizedDescription);
+        return;
+    }
+    CMTimeShow(actucalTime);
+    UIImage *image = [UIImage imageWithCGImage:cgImage];
+    
+    CGImageRelease(cgImage);
+    if (image) {
+        NSLog(@"视频截取成功");
+    } else {
+        NSLog(@"视频截取失败");
+    }
+    self.takedImage = image;//[UIImage imageWithCGImage:cgImage];
+    
+    [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+    
+    if (!_takedImageView) {
+        _takedImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        _takedImageView.backgroundColor = [UIColor blackColor];
+        _takedImageView.hidden = YES;
+        _takedImageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.view insertSubview:_takedImageView belowSubview:self.toolView];
+    }
+    self.takedImageView.hidden = NO;
+    self.takedImageView.image = self.takedImage;
+    [self.session stopRunning];
+}
 @end
