@@ -56,7 +56,7 @@ static UILabel *toastView = nil;
             [[UIApplication sharedApplication].keyWindow addSubview:toastView];
         }
     }
-    if (toastView.superview != [UIApplication sharedApplication].keyWindow) {
+    if (toastView.superview == [UIApplication sharedApplication].keyWindow) {
         [toastView removeFromSuperview];
         [[UIApplication sharedApplication].keyWindow addSubview:toastView];
         [[UIApplication sharedApplication].keyWindow bringSubviewToFront:toastView];
