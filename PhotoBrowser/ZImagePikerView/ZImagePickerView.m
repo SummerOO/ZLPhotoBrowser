@@ -74,10 +74,19 @@
     }
     zl_weakify(self);
     [actionSheet setSelectImageBlock:^(NSArray<UIImage *> * _Nonnull images, NSArray<PHAsset *> * _Nonnull assets, BOOL isOriginal) {
-        zl_strongify(weakSelf);
-        NSString *videoUrl = [ZLPhotoManager getVideoExportFilePath:(ZLExportVideoTypeMp4)];
-        if (strongSelf.selectImageBlock) {
-            strongSelf.selectImageBlock(images, assets, videoUrl);
+        if (assets.firstObject.mediaType == PHAssetMediaTypeVideo) {
+            __block NSString *videoUrl = nil;
+            [ZLPhotoManager exportVideoForAsset:assets.firstObject type:(ZLExportVideoTypeMp4) complete:^(NSString *exportFilePath, NSError *error) {
+                zl_strongify(weakSelf);
+                videoUrl = exportFilePath;
+                if (strongSelf.selectImageBlock) {
+                    strongSelf.selectImageBlock(images, assets, videoUrl);
+                }
+            }];
+        } else {
+            if (self.selectImageBlock) {
+                self.selectImageBlock(images, assets, @"");
+            }
         }
         NSLog(@"image:%@", images);
     }];
