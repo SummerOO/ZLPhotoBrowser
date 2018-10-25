@@ -102,4 +102,11 @@
 - (void)previewSelectedPhotos:(UIViewController *)viewController lastSelectPhotos:(NSArray<UIImage *> *)images assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal {
     [[self getPas: viewController] previewSelectedPhotos:images assets:assets index:index isOriginal:isOriginal];
 }
+- (void)previewOnlineVideo:(UIViewController *)viewController video:(NSString *)videoUrl {
+    NSArray *arrNetImages = @[GetDictForPreviewPhoto([NSURL URLWithString: videoUrl], ZLPreviewPhotoTypeURLVideo)];
+    [[self getPas: viewController] previewPhotos:arrNetImages index:0 hideToolBar:YES complete:^(NSArray * _Nonnull photos) {
+        
+    }];
+}
+
 @end

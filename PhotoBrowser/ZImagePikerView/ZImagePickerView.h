@@ -66,6 +66,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param complete 回调 (数组内为接收的 PHAsset / UIImage / NSURL 对象)
  */
 - (void)previewSelectedPhotos:(UIViewController *)viewController lastSelectPhotos:(NSArray<UIImage *> *)images assets:(NSArray<PHAsset *> *)assets index:(NSInteger)index isOriginal:(BOOL)isOriginal;
+/**
+ 查看在线小视频
+ */
+- (void)previewOnlineVideo:(UIViewController *)viewController video:(NSString *)videoUrl;
 
 - (void) show:(UIViewController *)viewController;
 @end
