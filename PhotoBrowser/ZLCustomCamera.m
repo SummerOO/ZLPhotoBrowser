@@ -127,13 +127,13 @@
     self.bottomView.frame = CGRectMake(0, 0, height*kBottomViewScale, height*kBottomViewScale);
     self.bottomView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     self.bottomView.layer.cornerRadius = height*kBottomViewScale/2;
-
+    
     self.topView.frame = CGRectMake(0, 0, height*kTopViewScale, height*kTopViewScale);
     self.topView.center = self.bottomView.center;
     self.topView.layer.cornerRadius = height*kTopViewScale/2;
     
     self.dismissBtn.frame = CGRectMake(60, self.bounds.size.height/2-25/2, 25, 25);
-
+    
     self.cancelBtn.frame = self.bottomView.frame;
     self.cancelBtn.layer.cornerRadius = height*kBottomViewScale/2;
     
@@ -191,7 +191,6 @@
     self.doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.doneBtn.frame = self.bottomView.frame;
     self.doneBtn.backgroundColor = [UIColor whiteColor];
-    [self.doneBtn setImage:[UIImage imageNamed: self.sureButonImageView] forState:UIControlStateNormal];
     [self.doneBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
     self.doneBtn.layer.masksToBounds = YES;
     self.doneBtn.hidden = YES;
@@ -230,6 +229,11 @@
     }
 }
 
+- (void)setSureButonImageView:(NSString *)sureButonImageView {
+    _sureButonImageView = sureButonImageView;
+    [self.doneBtn setImage:[UIImage imageNamed: _sureButonImageView] forState:UIControlStateNormal];
+}
+
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(nonnull UIGestureRecognizer *)otherGestureRecognizer
 {
     if (([gestureRecognizer isKindOfClass:[UILongPressGestureRecognizer class]] && [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]])) {
@@ -253,7 +257,7 @@
         animation.duration = self.maxRecordDuration;
         animation.delegate = self;
         [self.animateLayer addAnimation:animation forKey:nil];
-
+        
         [self.bottomView.layer addSublayer:self.animateLayer];
     }];
 }
@@ -389,7 +393,7 @@
     
     [[AVAudioSession sharedInstance] setActive:NO withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-//    NSLog(@"---- %s", __FUNCTION__);
+    //    NSLog(@"---- %s", __FUNCTION__);
 }
 
 - (void)viewDidLoad {
@@ -510,7 +514,6 @@
     _layoutOK = YES;
     
     self.toolView.frame = CGRectMake(0, kViewHeight-130-ZL_SafeAreaBottom, kViewWidth, 100);
-    self.toolView.sureButonImageView = self.sureButtonImageString;
     self.previewLayer.frame = self.view.layer.bounds;
     self.toggleCameraBtn.frame = CGRectMake(kViewWidth-50, 20, 30, 30);
 }
@@ -525,6 +528,7 @@
     self.toolView.allowRecordVideo = self.allowRecordVideo;
     self.toolView.circleProgressColor = self.circleProgressColor;
     self.toolView.maxRecordDuration = self.maxRecordDuration;
+    self.toolView.sureButonImageView = self.sureButtonImageString;
     [self.view addSubview:self.toolView];
     
     self.focusCursorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.foucsImageString]];
@@ -610,7 +614,7 @@
             
         case ZLCaptureSessionPreset1280x720:
             return AVCaptureSessionPreset1280x720;
-        
+            
         case ZLCaptureSessionPreset1920x1080:
             return AVCaptureSessionPreset1920x1080;
             
@@ -928,3 +932,4 @@
     [self.session stopRunning];
 }
 @end
+
