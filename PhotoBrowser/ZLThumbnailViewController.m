@@ -869,6 +869,8 @@ typedef NS_ENUM(NSUInteger, SlideSelectType) {
         camera.videoType = configuration.exportVideoType;
         camera.circleProgressColor = configuration.bottomBtnsNormalTitleColor;
         camera.maxRecordDuration = configuration.maxRecordDuration;
+        camera.sureButtonImageString = configuration.sureButtonImageString;
+        camera.foucsImageString = configuration.foucsImageString;
         zl_weakify(self);
         camera.doneBlock = ^(UIImage *image, NSURL *videoUrl) {
             zl_strongify(weakSelf);

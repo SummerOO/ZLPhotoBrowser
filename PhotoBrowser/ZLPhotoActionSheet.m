@@ -522,6 +522,8 @@ double const ScalePhotoWidth = 1000;
         camera.videoType = self.configuration.exportVideoType;
         camera.circleProgressColor = self.configuration.bottomBtnsNormalTitleColor;
         camera.maxRecordDuration = self.configuration.maxRecordDuration;
+        camera.foucsImageString = self.configuration.foucsImageString;
+        camera.sureButtonImageString = self.configuration.sureButtonImageString;
         zl_weakify(self);
         camera.finishBlock = ^(UIImage *image, NSURL *videoUrl, UIViewController *vc) {
             zl_strongify(weakSelf);

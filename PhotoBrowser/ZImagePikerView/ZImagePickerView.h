@@ -43,6 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, strong) UIColor *bottomBtnsNormalTitleColor;
 
+@property (copy, nonatomic) NSString *sureButtonImageString;
+
+@property (copy, nonatomic) NSString *fouceImageString;
+
 @property (nonatomic, strong) NSMutableArray<PHAsset *> *lastSelectAssets; // 记录上次选择的图片或视频
 
 /**
@@ -72,6 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)previewOnlineVideo:(UIViewController *)viewController video:(NSString *)videoUrl;
 
 - (void) show:(UIViewController *)viewController;
+
 @end
 
 NS_ASSUME_NONNULL_END

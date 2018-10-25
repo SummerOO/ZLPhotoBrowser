@@ -67,7 +67,8 @@
     configuration.maxRecordDuration = 10;
     configuration.sessionPreset = ZLCaptureSessionPreset1280x720;
     configuration.exportVideoType = ZLExportVideoTypeMov;
-    
+    configuration.sureButtonImageString = @"icon_phone_sure";
+    configuration.foucsImageString = @"img_kuang";
     return configuration;
 }
 

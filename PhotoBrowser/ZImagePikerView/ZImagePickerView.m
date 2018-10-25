@@ -61,6 +61,8 @@
     actionSheet.configuration.allowSelectOriginal = NO;
     actionSheet.configuration.customImageNames = self.customImageNames;
     actionSheet.configuration.showSelectedMask = self.showSelectedMask;
+    actionSheet.configuration.sureButtonImageString = self.sureButtonImageString;
+    actionSheet.configuration.foucsImageString = self.fouceImageString;
 #pragma mark - required
     //如果调用的方法没有传sender，则该属性必须提前赋值
     actionSheet.sender = viewController;

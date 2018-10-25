@@ -38,5 +38,8 @@
 
 @property (nonatomic, copy) void (^finishBlock)(UIImage *image, NSURL *videoUrl, UIViewController *vc);
 
+@property (copy, nonatomic) NSString *sureButtonImageString;
+
+@property (copy, nonatomic) NSString *foucsImageString;
 
 @end

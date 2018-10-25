@@ -247,4 +247,8 @@
  */
 @property (nonatomic, assign) ZLExportVideoType exportVideoType;
 
+@property (copy, nonatomic) NSString *sureButtonImageString;
+
+@property (copy, nonatomic) NSString *foucsImageString;
+
 @end

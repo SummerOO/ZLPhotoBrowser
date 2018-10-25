@@ -74,6 +74,7 @@
 @property (nonatomic, strong) UIView *topView;
 @property (nonatomic, strong) UIView *bottomView;
 @property (nonatomic, strong) CAShapeLayer *animateLayer;
+@property (copy, nonatomic) NSString *sureButonImageView;
 
 @property (nonatomic, assign) CGFloat duration;
 
@@ -190,7 +191,7 @@
     self.doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.doneBtn.frame = self.bottomView.frame;
     self.doneBtn.backgroundColor = [UIColor whiteColor];
-    [self.doneBtn setImage:[UIImage imageNamed: @"icon_phone_sure"] forState:UIControlStateNormal];
+    [self.doneBtn setImage:[UIImage imageNamed: self.sureButonImageView] forState:UIControlStateNormal];
     [self.doneBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
     self.doneBtn.layer.masksToBounds = YES;
     self.doneBtn.hidden = YES;
@@ -509,6 +510,7 @@
     _layoutOK = YES;
     
     self.toolView.frame = CGRectMake(0, kViewHeight-130-ZL_SafeAreaBottom, kViewWidth, 100);
+    self.toolView.sureButonImageView = self.sureButtonImageString;
     self.previewLayer.frame = self.view.layer.bounds;
     self.toggleCameraBtn.frame = CGRectMake(kViewWidth-50, 20, 30, 30);
 }
@@ -525,7 +527,7 @@
     self.toolView.maxRecordDuration = self.maxRecordDuration;
     [self.view addSubview:self.toolView];
     
-    self.focusCursorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed: @"img_kuang"]];
+    self.focusCursorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:self.foucsImageString]];
     self.focusCursorImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.focusCursorImageView.clipsToBounds = YES;
     self.focusCursorImageView.frame = CGRectMake(0, 0, 80, 80);
